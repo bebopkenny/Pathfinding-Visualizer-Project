@@ -4,8 +4,10 @@ import { resetGrid } from "../utils/resetGrid";
 import { Select } from "./Select";
 import { useTile } from "../hooks/useTile";
 import { MazeType } from "../utils/types";
+import { useState } from "react";
 
 export function Nav() {
+    const [isDisabled, setIsDisabled] = useState(false);
     const { maze, setMaze, grid } = usePathfinding();
     const { startTile, endTile} = useTile();
 
@@ -13,7 +15,11 @@ export function Nav() {
         if (maze === 'NONE') {
             setMaze(maze)
             resetGrid({grid, startTile, endTile})
+            return
         }
+        setMaze(maze);
+        setIsDisabled(true);
+        // runMazeAlgorithm
     };
 
     return (

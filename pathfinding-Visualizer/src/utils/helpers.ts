@@ -17,7 +17,7 @@ const createRow = (row: number, startTile: TileType, endTile: TileType) => {
         });
     }
     return currentRow;
-}
+};
 
 export const createGrid = (startTile: TileType, endTile: TileType) => {
     const grid: GridType = [];
@@ -39,8 +39,16 @@ export const createNewGrid = (grid: GridType, row: number, col: number) => {
     }
     newGrid[row][col] = newTile;
     return newGrid;
-}
+};
 
 export const isEqual = (a: TileType, b: TileType) => {
     return a.row === b.row && a.col === b.col;
-}
+};
+
+export const isRowColEqual = (row: number, col: number, tile: TileType) => {
+    return row === tile.row && col === tile.col;
+};
+
+export const sleep = (ms: number) => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+};
